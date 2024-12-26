@@ -1,0 +1,39 @@
+###
+GET http://localhost:9099/stocks/all
+
+###
+POST http://localhost:8080/employee/all
+
+###
+POST http://localhost:8080/employee/id/2
+Content-Type: application/x-www-form-urlencoded
+
+###
+POST http://localhost:8080/employee/name
+Content-Type: application/json
+
+{
+  "firstName": "Jack",
+  "lastName": "Nicholson"
+}
+
+<> 2024-08-23T020207.200.json
+<> 2024-08-23T015957.500.json
+
+###
+POST http://localhost:8080/order/create
+Content-Type: application/json
+
+<> 2024-12-26T021415-1.200.json
+<> 2024-12-26T021415.200.json
+<> 2024-12-26T021414-3.200.json
+<> 2024-12-26T021414-2.200.json
+<> 2024-12-26T021414-1.200.json
+<> 2024-12-26T021414.200.json
+<> 2024-12-26T021413-1.200.json
+<> 2024-12-26T021413.200.json
+<> 2024-12-26T021412-1.200.json
+<> 2024-12-26T021412.200.json
+<> 2024-12-26T021411.200.json
+<> 2024-12-26T021355.200.json
+<> 2024-12-26T021344.404.json
