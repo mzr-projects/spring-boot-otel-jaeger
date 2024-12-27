@@ -1,4 +1,5 @@
 package com.mt.demo.otel.dptinhbooyoteljaeger.payloads;
 
-public class Order {
+public record Order(int id, String name) {
+
 }
