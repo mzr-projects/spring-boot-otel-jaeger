@@ -1,0 +1,16 @@
+{
+    "collector": {
+        "otlp": {
+            "enabled": true
+        }
+    },
+    "processor": {
+        "batch": {
+            "timeout": "1s",
+            "send_batch_size": 100
+        }
+    },
+    "storage": {
+        "type": "memory"
+    }
+}

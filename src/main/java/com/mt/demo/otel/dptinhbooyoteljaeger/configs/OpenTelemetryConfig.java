@@ -1,7 +1,6 @@
 package com.mt.demo.otel.dptinhbooyoteljaeger.configs;
 
 import io.micrometer.core.instrument.MeterRegistry;
-import io.micrometer.core.instrument.config.MeterRegistryConfig;
 import io.micrometer.core.instrument.observation.DefaultMeterObservationHandler;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationHandler;
