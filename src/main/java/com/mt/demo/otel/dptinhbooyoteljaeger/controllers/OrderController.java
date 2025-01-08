@@ -4,9 +4,9 @@ import com.mt.demo.otel.dptinhbooyoteljaeger.payloads.Order;
 import com.mt.demo.otel.dptinhbooyoteljaeger.payloads.OrderResponse;
 import com.mt.demo.otel.dptinhbooyoteljaeger.services.OrderService;
 import io.micrometer.core.instrument.MeterRegistry;
+import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.trace.Span;
 import io.opentelemetry.api.trace.StatusCode;
-import io.opentelemetry.api.trace.Tracer;
 import io.opentelemetry.context.Scope;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,14 +23,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
 
     private final OrderService orderService;
-    private final Tracer tracer;
+    private final OpenTelemetry openTelemetry;
     private final MeterRegistry meterRegistry;
 
     @PostMapping("/create")
     public ResponseEntity<OrderResponse> createOrder() {
         meterRegistry.counter("order.created", "endpoint", "hello").increment();
 
-        Span span = tracer.spanBuilder("create-order-controller")
+        Span span = openTelemetry
+                .getTracer("createOrderTracerController")
+                .spanBuilder("create-order-controller")
                 .setAttribute("http.method", "POST")
                 .setAttribute("http.route", "/order/create")
                 .startSpan();

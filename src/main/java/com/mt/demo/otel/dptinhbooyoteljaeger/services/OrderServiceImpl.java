@@ -1,6 +1,7 @@
 package com.mt.demo.otel.dptinhbooyoteljaeger.services;
 
 import com.mt.demo.otel.dptinhbooyoteljaeger.payloads.Order;
+import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.common.AttributeKey;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.trace.Span;
@@ -17,13 +18,12 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class OrderServiceImpl implements OrderService {
 
-    private final Tracer tracer;
+    private final OpenTelemetry tracer;
 
     @Override
-    @WithSpan
     public Order createOrder(int id, String name) {
 
-        Span span = tracer.spanBuilder("in-create-order-method")
+        Span span = tracer.getTracer("create-order-tracer").spanBuilder("in-create-order-method")
                 .setAttribute("order.id", id)
                 .setAttribute("order.name", name)
                 .startSpan();
